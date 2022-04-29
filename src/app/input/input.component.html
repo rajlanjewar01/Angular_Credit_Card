@@ -1,0 +1,24 @@
+<input [formControl]="control" class="form-control mb-2"/>
+
+<ng-container
+  *ngIf="
+    control.dirty &&
+    control.touched &&
+    control.errors
+  "
+>
+  <div *ngIf="control.errors.required" class="border p-1 mt-2 text-danger alert-warning mb-2">
+    Value is required.
+  </div>
+  <div *ngIf="control.errors.minlength" class="border p-1 mt-2 text-danger alert-warning mb-2">
+    Value you entered is
+    {{ control.errors.minlength.actualLength }}
+    characters long, but it must be at least
+    {{ control.errors.minlength.requiredLength }}
+    characters
+  </div>
+
+  <div *ngIf="control.errors.pattern" class="mt-2 text-danger  border p-1 mt-2 mb-2 alert-warning">
+    Invalid format
+  </div>
+</ng-container>

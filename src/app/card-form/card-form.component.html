@@ -1,0 +1,33 @@
+<app-card
+  [name]="$any(cardForm).controls['name'].value"
+  [cardNumber]="$any(cardForm).controls['cardNumber'].value"
+  [expiration]="$any(cardForm).controls['expiration'].value"
+></app-card>
+
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+  <label>Name:</label>
+  <app-input [control]="$any(cardForm).controls['name']"></app-input>
+
+  <label>Card Number: (0000-1111-2222-3333)</label>
+  <app-input [control]="$any(cardForm).controls['cardNumber']"></app-input>
+
+  <div class="row">
+    <div class="col-md-6 mb-1">
+      <label>Expiration date: (MM/YY)</label>
+      <app-input [control]="$any(cardForm).controls['expiration']"></app-input>    
+    </div>
+    <div class="col-md-6">
+      <label>Security Code:</label>
+      <app-input [control]="$any(cardForm).controls['securityCode']"></app-input>
+    </div>
+  </div>
+
+  <button  [disabled]="cardForm.invalid" type="submit" class="btn btn-primary">Submit</button>&nbsp;
+  <button type="reset" class="btn btn-warning" (click)="onClickReset()">Reset</button>
+</form>
+
+
+<hr />
+<div>Form Contents: {{ cardForm.value | json }}</div>
+<div>Form is valid: {{ cardForm.valid }}</div>
+<!-- <div>Errors around name: {{ cardForm.controls.name.errors | json }}</div> -->

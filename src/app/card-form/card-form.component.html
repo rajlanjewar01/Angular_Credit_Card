@@ -1,8 +1,10 @@
-<app-card
-  [name]="$any(cardForm).controls['name'].value"
-  [cardNumber]="$any(cardForm).controls['cardNumber'].value"
-  [expiration]="$any(cardForm).controls['expiration'].value"
-></app-card>
+
+  <app-card
+    [name]="$any(cardForm).controls['name'].value"
+    [cardNumber]="$any(cardForm).controls['cardNumber'].value"
+    [expiration]="$any(cardForm).controls['expiration'].value"
+  ></app-card>
+
 
 <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
   <label>Name:</label>
